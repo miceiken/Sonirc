@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Sonirc.Models;
-using Sonirc.Parser;
+using Sonirc.Parsers;
 using Xunit;
 
-namespace Sonirc.Parser.Test
+namespace Sonirc.Parsers.Tests
 {
     public class MessageParserTests
     {

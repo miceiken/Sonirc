@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Sonirc.Parser;
+using Sonirc.Parsers;
 using Superpower;
 using Xunit;
 
-namespace Sonirc.Parser.Tests
+namespace Sonirc.Parsers.Tests
 {
     public class ParametersParserTests
     {

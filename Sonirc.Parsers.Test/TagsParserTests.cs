@@ -4,7 +4,7 @@ using System;
 using Xunit;
 using Sonirc.Models;
 
-namespace Sonirc.Parser.Test
+namespace Sonirc.Parsers.Tests
 {
     public class TagsParserTests
     {

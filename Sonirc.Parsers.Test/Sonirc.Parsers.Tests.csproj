@@ -14,7 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Sonirc.Parser\Sonirc.Parser.csproj" />
+    <ProjectReference Include="..\Sonirc.Parsers\Sonirc.Parsers.csproj" />
   </ItemGroup>
 
 </Project>

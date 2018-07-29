@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Linq;
 
-namespace Sonirc.Parser
+namespace Sonirc.Parsers
 {
     public static class ParametersTextParser
     {

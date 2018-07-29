@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26124.0
 MinimumVisualStudioVersion = 15.0.26124.0
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sonirc.Parser", "Sonirc.Parser\Sonirc.Parser.csproj", "{C8D24876-DB8D-4E60-9706-20F9D74BEBD4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sonirc.Parsers", "Sonirc.Parsers\Sonirc.Parsers.csproj", "{C8D24876-DB8D-4E60-9706-20F9D74BEBD4}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sonirc.Parser.Tests", "Sonirc.Parser.Test\Sonirc.Parser.Tests.csproj", "{A8EF5B26-2D12-4764-B41B-C45A19C58E43}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sonirc.Parsers.Tests", "Sonirc.Parsers.Test\Sonirc.Parsers.Tests.csproj", "{A8EF5B26-2D12-4764-B41B-C45A19C58E43}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sonirc.Models", "Sonirc.Models\Sonirc.Models.csproj", "{BD29E1CF-24B5-4E66-B10D-244439F85B01}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sonirc.Models", "Sonirc.Models\Sonirc.Models.csproj", "{BD29E1CF-24B5-4E66-B10D-244439F85B01}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

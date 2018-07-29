@@ -6,7 +6,7 @@ using Superpower;
 using Superpower.Parsers;
 using Sonirc.Models;
 
-namespace Sonirc.Parser
+namespace Sonirc.Parsers
 {
     public static class TagsTextParser
     {

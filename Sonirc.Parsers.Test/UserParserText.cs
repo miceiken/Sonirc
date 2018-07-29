@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Text;
 using Xunit;
 
-namespace Sonirc.Parser.Tests
+namespace Sonirc.Parsers.Tests
 {
     public class UserParserText
     {
