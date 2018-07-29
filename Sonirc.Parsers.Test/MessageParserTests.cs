@@ -19,7 +19,7 @@ namespace Sonirc.Parsers.Tests
                 Prefix = null,
                 Command = "CAP",
                 Parameters = new string[] { "REQ", "sasl" }
-            }, MessageTextParser.Parse("CAP REQ :sasl"));            
+            }, MessageTextParser.Parse("CAP REQ :sasl"));
         }
 
         [Fact]
@@ -32,7 +32,7 @@ namespace Sonirc.Parsers.Tests
                 Command = "CAP",
                 Parameters = new string[] { "LS", "*", "multi-prefix extended-join sasl" }
             }, MessageTextParser.Parse(":irc.example.com CAP LS * :multi-prefix extended-join sasl"));
-        }        
+        }
 
         [Fact]
         public void TestPrivmsgMessage()
@@ -43,7 +43,7 @@ namespace Sonirc.Parsers.Tests
                 Prefix = new User { Nickname = "dan", Username = "d", Host = "localhost" },
                 Command = "PRIVMSG",
                 Parameters = new string[] { "#chan", "Hey what's up!" }
-            }, MessageTextParser.Parse("@id=234AB :dan!d@localhost PRIVMSG #chan :Hey what's up!"));            
+            }, MessageTextParser.Parse("@id=234AB :dan!d@localhost PRIVMSG #chan :Hey what's up!"));
         }
     }
 }
