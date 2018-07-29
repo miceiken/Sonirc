@@ -4,6 +4,7 @@ using System.Text;
 using Sonirc.Parsers;
 using Superpower;
 using Xunit;
+using Sonirc.Models;
 
 namespace Sonirc.Parsers.Tests
 {

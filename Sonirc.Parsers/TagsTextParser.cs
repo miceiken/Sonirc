@@ -26,7 +26,7 @@ namespace Sonirc.Parsers
                 };
 
         internal static TextParser<Tag[]> TagsParser { get; } =
-            TagParser.AtLeastOnceDelimitedBy(Character.EqualTo(';'));
+            TagParser.AtLeastOnceDelimitedBy(Character.EqualTo(';')).AtEnd();
 
         public static IEnumerable<Tag> Parse(string input) =>
             TagsParser.Parse(input);

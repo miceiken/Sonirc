@@ -26,13 +26,13 @@ namespace Sonirc.Parsers
             select
                 new[] { first }.Concat(rest).ToArray();
 
-        internal static TextParser<IEnumerable<string>> ParametersParser { get; } =
+        internal static TextParser<string[]> ParametersParser { get; } =
             from middle in
                 ManySpaces.IgnoreThen(MiddleParser).Try().Many()
             from trailing in
-                ManySpaces.IgnoreThen(Character.EqualTo(':')).IgnoreThen(TrailingParser).OptionalOrDefault()
+                ManySpaces.IgnoreThen(Character.EqualTo(':')).IgnoreThen(TrailingParser).OptionalOrDefault().AtEnd()
             select
-                middle.Select(Extensions.CreateString).Concat(trailing.CreateStringArray());
+                middle.Select(Extensions.CreateString).Concat(trailing.CreateStringArray()).ToArray();
 
         public static IEnumerable<string> Parse(string input) =>
             ParametersParser.Parse(input);

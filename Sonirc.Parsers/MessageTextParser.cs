@@ -5,43 +5,35 @@ using Superpower.Parsers;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Linq;
 
 namespace Sonirc.Parsers
 {
     public static class MessageTextParser
     {
-        private static TextParser<string> CommandParser { get; } =
-            from cmd in
+        private static TextParser<string> VerbParser { get; } =
+            from verb in
                 Character.Letter.AtLeastOnce().Or(Character.Digit.Repeat(3))
             select
-                cmd.CreateString();
-
-        // TODO: This can also be servername
-        private static TextParser<User> PrefixParser { get; } =
-            from prefix in
-                Character.EqualTo(':').IgnoreThen(UserTextParser.UserParser)
-            from _ in
-                Character.EqualTo(' ')
-            select
-                prefix;
+                verb.CreateString();
 
         private static TextParser<Message> MessageParser { get; } =
             from tags in
                 TagsTextParser.TagsParser.Between(Character.EqualTo('@'), Character.EqualTo(' ')).OptionalOrDefault()
-            from prefix in
-                UserTextParser.UserParser.Between(Character.EqualTo(':'), Character.EqualTo(' ')).OptionalOrDefault()
-            from command in
-                CommandParser
+            from source in
+                SourceTextParser.SourceParser.Between(Character.EqualTo(':'), Character.EqualTo(' ')).OptionalOrDefault()
+            from verb in
+                VerbParser
             from parameters in
                 ParametersTextParser.ParametersParser.OptionalOrDefault()
             from crlf in
-                Character.EqualTo('\r').IgnoreThen(Character.EqualTo('\n')).OptionalOrDefault().AtEnd()
+                Span.EqualTo("\r\n").OptionalOrDefault().AtEnd()
             select
                 new Message
                 {
                     Tags = tags,
-                    Prefix = prefix,
-                    Command = command,
+                    Source = source,
+                    Verb = verb,
                     Parameters = parameters
                 };
 

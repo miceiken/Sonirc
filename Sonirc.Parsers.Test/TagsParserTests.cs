@@ -9,6 +9,44 @@ namespace Sonirc.Parsers.Tests
     public class TagsParserTests
     {
         [Fact]
+        public void TestModelsEmpty()
+        {
+            Assert.Equal(
+                new Tag(),
+                new Tag()
+            );
+
+            Assert.Equal(
+                new[] { new Tag() },
+                new[] { new Tag() }
+            );
+        }
+
+        [Fact]
+        public void TestModelsEqual()
+        {
+            Assert.Equal(
+                new[] { new Tag { Key = "id", Value = "123AB" } },
+                new[] { new Tag { Key = "id", Value = "123AB" } }
+            );
+        }
+
+        [Fact]
+        public void TestModelsDifferentOrder()
+        {
+            Assert.NotEqual(
+                new[] {
+                    new Tag { Key = "id", Value = "123AB" },
+                    new Tag { Key= "netsplit", Value="tur"}
+                },
+                new[] {
+                    new Tag { Key= "netsplit", Value="tur"},
+                    new Tag { Key = "id", Value = "123AB" }
+                }
+            );
+        }
+
+        [Fact]
         public void TestNoTags()
         {
             Assert.Throws<ParseException>(() => TagsTextParser.Parse(""));
@@ -17,10 +55,21 @@ namespace Sonirc.Parsers.Tests
         [Fact]
         public void TestInvalidTags()
         {
-            Assert.Throws<ParseException>(() => TagsTextParser.Parse(";"));
-            Assert.Throws<ParseException>(() => TagsTextParser.Parse("=;"));
-            Assert.Throws<ParseException>(() => TagsTextParser.Parse("=a;"));
-            Assert.Throws<ParseException>(() => TagsTextParser.Parse("id=1;;"));
+            Assert.Throws<ParseException>(
+                () => TagsTextParser.Parse(";")
+            );
+
+            Assert.Throws<ParseException>(
+                () => TagsTextParser.Parse("=;")
+            );
+
+            Assert.Throws<ParseException>(
+                () => TagsTextParser.Parse("=a;")
+            );
+
+            Assert.Throws<ParseException>(
+                () => TagsTextParser.Parse("id=1;;")
+            );
         }
 
         [Fact]
@@ -42,7 +91,9 @@ namespace Sonirc.Parsers.Tests
         [Fact]
         public void TestEmptyKeyValue()
         {
-            Assert.Throws<ParseException>(() => TagsTextParser.Parse("=123AB;"));
+            Assert.Throws<ParseException>(
+                () => TagsTextParser.Parse("=123AB;")
+            );
         }
 
         [Fact]
@@ -78,6 +129,16 @@ namespace Sonirc.Parsers.Tests
                 new Tag { Key = "id", Value = "" },
                 new Tag { Key= "netsplit", Value="tur"}
             }, TagsTextParser.Parse("id=;netsplit=tur"));
+        }
+
+        [Fact]
+        public void TestTagsFromPrivmsg()
+        {
+            Assert.Equal(
+                new[] {
+                    new Tag { Key = "id", Value = "234AB" },
+                }, MessageTextParser.Parse("@id=234AB :dan!d@localhost PRIVMSG #chan :Hey what's up!").Tags
+            );
         }
     }
 }
